@@ -3,26 +3,17 @@ pipeline {
     stages{
         stage('Clone') {
             steps {
-                echo 'clone start'
                 git branch: 'main', credentialsId: '1highbar45', url: 'https://github.com/1highbar45/mediplus-lite.git'
-                echo 'clone finish'
-            }
-        }
-        stage('Build'){
-            steps{
-                echo 'build code'
-            }
-        }
-        stage('Test'){
-            steps{
-                echo 'run unittest'
             }
         }
         stage('Docker'){
             steps{
-                echo 'build image'
-                echo 'tag'
-                echo 'push docker hub'
+                // This step should not normally be used in your script. Consult the inline help for details.
+                withDockerRegistry(credentialsId: 'dockerhub') {
+                    // some block
+                    sh label: '', script: 'docker build -t sigmaduck125/my-website .'
+                    sh label: '', script: 'docker push sigmaduck125/my-website'
+                }
             }
         }
     }
