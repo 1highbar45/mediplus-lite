@@ -3,10 +3,9 @@ pipeline {
     stages{
         stage('Clone') {
             steps {
-                // git branch: 'main', 
-                // credentialsId: '1highbar45', 
-                // url: 'https://github.com/1highbar45/mediplus-lite.git'
-                echo 'clone code from github'
+                echo 'clone start'
+                git branch: 'main', credentialsId: '1highbar45', url: 'https://github.com/1highbar45/mediplus-lite.git'
+                echo 'clone finish'
             }
         }
         stage('Build'){
