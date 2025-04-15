@@ -9,7 +9,7 @@ pipeline {
         stage('Docker'){
             steps{
                 // This step should not normally be used in your script. Consult the inline help for details.
-                withDockerRegistry(credentialsId: 'dockerhub', url: '') {
+                withDockerRegistry(credentialsId: 'cred-docker-hub', url: '') {
                     // some block
                     sh label: '', script: 'docker build -t sigmaduck125/my-website .'
                     sh label: '', script: 'docker push sigmaduck125/my-website'
