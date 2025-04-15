@@ -6,6 +6,17 @@ This repository contains a Jenkins pipeline configuration for automating the bui
 ## Prerequisites
 - Jenkins server installed and configured with Docker: 
     docker run -d --name jenkins --restart=unless-stopped -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkins/jenkins:lts
+    # Display all groups the current user belongs to
+    groups
+    
+    # View user information in passwd file
+    cat /etc/passwd
+    
+    # Add jenkins user to root group for Docker access
+    sudo usermod -aG docker jenkins
+    
+    # Switch to jenkins user account
+    su jenkins
 - Install Ngrok with Docker with port 8080 to map with Jenkins
 - Docker installed on Jenkins server
 - Docker Hub account
