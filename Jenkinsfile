@@ -16,5 +16,16 @@ pipeline {
                 }
             }
         }
+        stage("Deploy"){
+            steps{
+                sshagent(['ubuntu-server']) {
+                    // some block
+                    sh """
+                        ssh -o StrictHostKeyChecking=no ubuntu@54.151.249.93 << 'EOF'
+                        sudo docker service update --image sigmaduck125/my-website:latest webserver
+                    """                
+                }            
+            }
+        }
     }
 }
