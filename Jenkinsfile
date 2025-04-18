@@ -28,4 +28,9 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            mail bcc: '', body: 'jenkins server', cc: '', from: '', replyTo: '', subject: 'jenkins server', to: 'vuanh1228@gmail.com'
+        } 
+    }
 }
